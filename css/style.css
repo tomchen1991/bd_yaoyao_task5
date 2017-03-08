@@ -1,0 +1,48 @@
+#net {
+  display:grid;
+  grid-template-columns: repeat(11, 50px); 
+  grid-template-rows: repeat(11, 50px);
+  height:auto;
+}
+#column1 {
+  grid-column:2;
+  vertical-align:middle;
+}
+.coordinate {
+  text-align:center;
+  margin:auto;
+}
+#map {
+  grid-column:2/12;
+  grid-row:2/12;
+  border:solid 2px;
+  z-index:2;
+}
+#cube {
+  transition: all 1s;
+  position:relative;
+  grid-column:6;
+  grid-row:6;
+  background-color:red;
+  height:50px;
+  width:50px;
+  z-index:3;
+  animation: myfirst 1s;
+}
+#blueHead {
+  background-color:blue;
+  height:10px;
+  width:50px;
+}
+.controller {
+  width:550px;
+  text-align:center;
+}
+.drawLine {
+  width:49px;
+  height:49px;
+  border:solid;
+  border-width:1px;
+  border-color:#CCC;
+  z-index:1;
+}
