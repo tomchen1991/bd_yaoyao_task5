@@ -49,6 +49,17 @@ function forward(cubeP) {
                    }
 }
 //方块执行GO命令改变坐标
+function turn(cubeP,num) {
+  var a=Math.round(cubeP.rotateReg/360);
+  a*=360;
+  switch (num) {
+    case 0: return a;
+    case 90: return a+90;
+    case 180: (a>cubeP.rotateReg)? (a=a-180):(a=a+180);return a;
+    case 270:return a-90;
+         }
+}
+//保证MOV时能最小角度转到正确的方向
 function operate (str,cubeP) {
   switch(str) {
     case "GO":forward(cubeP);break;
@@ -59,10 +70,10 @@ function operate (str,cubeP) {
     case "TRA TOP":if(wall(cubeP.indexY,1)) cubeP.indexY--;break;
     case "TRA RIG":if(wall(cubeP.indexX,10))cubeP.indexX++;break;
     case "TRA BOT":if(wall(cubeP.indexY,10)) cubeP.indexY++;break;
-    case "MOV LEF":cubeP.rotateReg= -90;forward(cubeP);break;
-    case "MOV TOP":cubeP.rotateReg=0;forward(cubeP);break;
-    case "MOV RIG":cubeP.rotateReg=90;forward(cubeP);break;
-    case "MOV BOT":cubeP.rotateReg=180;forward(cubeP);break;
+    case "MOV LEF":cubeP.rotateReg=turn(cubeP,270);forward(cubeP);break;
+    case "MOV TOP":cubeP.rotateReg=turn(cubeP,0);forward(cubeP);break;
+    case "MOV RIG":cubeP.rotateReg=turn(cubeP,90);forward(cubeP);break;
+    case "MOV BOT":cubeP.rotateReg=turn(cubeP,180);forward(cubeP);break;
     default: alert("错误的指令！");
           }
 }
